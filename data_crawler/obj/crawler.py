@@ -104,6 +104,7 @@ class Clawler:
         17페이지 내용 : 제1편 참평화의 근본원리 1 __ 13. 5. 16. 343 Page17
         """
 
+
         # まず、篇の番号を取得する。例の場合は１。
         book_num_str = self.regex_book_num.search(text).group() # ex) 제1편
         book_num = self.regex_num.search(book_num_str).group() # ex) 1
@@ -126,8 +127,13 @@ class Clawler:
             chapter_titles.append(title)
 
         return chapter_titles
-        
-        
+
+    def _get_page_num(self, text):
+        """
+        本文Page22
+        みたいに、ページの情報はきまって最後の最後にある。
+        """
+        return self.regex_page_num.search(text).group()
 
     def _get_page_num(self, text):
         """
@@ -152,7 +158,7 @@ class Clawler:
 
         >> 普段のページの終わりにある
         1. 하나님과 인간을 위한 이상세계 25 1 __ 16. 4. 1. 636 Page25
-        """
+        """        
 
         page_num = self._get_page_num(text)
         text = text.split(":", 1)[1] # ex) 19페이지 내용 : 
