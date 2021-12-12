@@ -97,11 +97,13 @@ class Clawler:
         return False
 
     def _get_book_title(self, text):
+
         """
         _is_top_of_bookがTrueの時に使う。
         例↓
         17페이지 내용 : 제1편 참평화의 근본원리 1 __ 13. 5. 16. 343 Page17
         """
+
         # まず、篇の番号を取得する。例の場合は１。
         book_num_str = self.regex_book_num.search(text).group() # ex) 제1편
         book_num = self.regex_num.search(book_num_str).group() # ex) 1
