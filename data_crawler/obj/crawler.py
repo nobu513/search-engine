@@ -135,13 +135,6 @@ class Clawler:
         """
         return self.regex_page_num.search(text).group()
 
-    def _get_page_num(self, text):
-        """
-        本文Page22
-        みたいに、ページの情報はきまって最後の最後にある。
-        """
-        return self.regex_page_num.search(text).group()
-
     def _remove_meta_info(self, text, chapter_title, chapter_num):
         """
         あとでページ同士をつなげることを考えて、前後のメタ情報（ページ数、篇タイトル、章タイトル）
