@@ -134,7 +134,7 @@ class Clawler:
         """
         return self.regex_page_num.search(text).group()
 
-    def _remove_meta_info(self):
+    def _remove_meta_info(self, text, chapter_title, chapter_num):
         """
         あとでページ同士をつなげることを考えて、前後のメタ情報（ページ数、篇タイトル、章タイトル）
         を取り除いておく。対象は以下の通り。
@@ -150,8 +150,7 @@ class Clawler:
 
         >> 普段のページの終わりにある
         1. 하나님과 인간을 위한 이상세계 25 1 __ 16. 4. 1. 636 Page25
-        """
-    def _remove_meta_info(self, text, chapter_title, chapter_num):
+        """        
         page_num = self._get_page_num(text)
         text = text.split(":", 1)[1] # ex) 19페이지 내용 : 
 
